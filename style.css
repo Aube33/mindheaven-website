@@ -5,9 +5,10 @@
 
 :root {
     --font-color: #040304;
-    --primary-color: #E4E0DB;
+    --primary-color: #f5ece1;
     --white-color: #e6e6e6;
     --grey-color: #3d3d3d;
+    --orange-color: #e7a079;
 }
 
 @keyframes float {
@@ -25,22 +26,24 @@
 
 body {
     font-family: Verdana, sans-serif;
-    background-color: var(--primary-color);
     color: var(--font-color);
-    background: linear-gradient(90deg, rgb(234, 238, 238) 0%, rgb(173, 186, 190) 100%);
+    background: linear-gradient(90deg, #88c0d0 0%, #81a1c1 100%);
     padding-top: 100px;
     padding-bottom: 50px;
 }
 
 button {
-    background-color: var(--white-color);
+    background-color: var(--orange-color);
     border: none;
     padding: 15px 25px;
     border-radius: 30px;
     text-align: center;
     cursor: pointer;
-    font-size: 1.1em;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
     transition: box-shadow 0.25s ease;
+    word-spacing: 3px;
 }
 button:hover {
     box-shadow: 0 0 20px rgba(162, 206, 219, 0.8);
@@ -54,7 +57,13 @@ h1 {
 }
 
 p {
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.2em;
+}
+ul {
+    font-size: 1.2em;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 hr {
@@ -91,13 +100,16 @@ hr {
 .presentation img{
     width: 512px;
     height: auto;
-    -webkit-filter: drop-shadow(80px 10px 100px rgb(137, 149, 153));
-    filter: drop-shadow(80px 10px 100px rgb(137, 149, 153));
+    -webkit-filter: drop-shadow(40px 40px 90px var(--orange-color));
+    filter: drop-shadow(40px 40px 90px var(--orange-color));
+}
+.presentation p {
+    line-height: 2;
 }
 .presentation .description {
     justify-content: space-between;
     align-items: start;
-    width: 30%;
+    width: 40%;
 }
 .presentation .networks > button {
     margin: 0 10px;
@@ -119,11 +131,11 @@ hr {
     width: 25%;
     height: auto;
     padding: 20px 30px;
-    padding-top: 0;
+    padding-top: 15px;
     background: rgb(234, 238, 238);
     border-radius: 15px;
     box-shadow: 5px 4px 15px rgb(173, 186, 190);
-    filter: drop-shadow(80px 10px 100px rgba(137, 149, 153, 0.2));
+    box-shadow: 15px 15px 0px var(--orange-color);
 }
 
 .goal h2 {
