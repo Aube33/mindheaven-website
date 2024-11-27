@@ -1,16 +1,24 @@
-*{
+/* ===== SOURCE ===== */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+
 :root {
-    --font-color: #040304;
+    --font-color: #202f34;
     --primary-color: #f5ece1;
-    --white-color: #e6e6e6;
+    --white-color: #ffffff;
     --grey-color: #3d3d3d;
     --orange-color: #e7a079;
 }
 
+
+
+/* ===== ANIMATIONS ===== */
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -24,36 +32,19 @@
 }
 
 
+
+/* ===== BASES ===== */
 body {
     font-family: Verdana, sans-serif;
     color: var(--font-color);
-    background: linear-gradient(90deg, #88c0d0 0%, #81a1c1 100%);
+    background: linear-gradient(90deg, #88c0d0 0%, #6086ac 100%);
     padding-top: 100px;
     padding-bottom: 50px;
 }
 
-button {
-    background-color: var(--orange-color);
-    border: none;
-    padding: 15px 25px;
-    border-radius: 30px;
-    text-align: center;
-    cursor: pointer;
-    color: var(--primary-color);
-    font-size: 1.2em;
-    font-weight: bold;
-    transition: box-shadow 0.25s ease;
-    word-spacing: 3px;
-}
-button:hover {
-    box-shadow: 0 0 20px rgba(162, 206, 219, 0.8);
-}
-button i {
-    font-size: 1.3em;
-}
-
 h1 {
     font-size: 2.7em;
+    color: var(--white-color);
 }
 
 p {
@@ -70,6 +61,40 @@ hr {
     border: 1px dashed var(--grey-color);
     width: 120px;
     margin: 50px 0;
+}
+
+footer {
+    color: var(--primary-color);
+}
+
+
+
+/* ===== COMPOSANTS ===== */
+.responsive {
+    display: none;
+}
+
+.button {
+    background-color: var(--orange-color);
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: box-shadow 0.25s ease-out;
+    word-spacing: 3px;
+
+}
+.button:hover {
+    box-shadow: 0 0 20px var(--orange-color);
+}
+.button i {
+    font-size: 1.3em;
 }
 
 .box {
@@ -89,13 +114,17 @@ hr {
 }
 
 .floating {
-    animation: float 4s ease-in infinite;
+    animation: float 4s ease-in-out infinite;
 }
 
+
+
+/* ===== CONTENU ===== */
 .presentation {
     justify-content: space-evenly;
     padding: 50px 100px 50px 300px;
     box-shadow: drop-shadow(10px 0px 10px var(--font-color));
+    color: var(--white-color);
 }
 .presentation img{
     width: 512px;
@@ -111,8 +140,8 @@ hr {
     align-items: start;
     width: 40%;
 }
-.presentation .networks > button {
-    margin: 0 10px;
+.presentation .networks > .button:not(:first-child) {
+    margin-left: 20px;
 }
 
 .objectifs {
@@ -120,7 +149,6 @@ hr {
     justify-content: start;
     align-items: start;
 }
-
 .goal-list {
     margin-top: 35px;
     display: flex;
@@ -130,18 +158,15 @@ hr {
 .goal {
     width: 25%;
     height: auto;
-    padding: 20px 30px;
+    padding: 30px 30px;
     padding-top: 15px;
     background: rgb(234, 238, 238);
     border-radius: 15px;
-    box-shadow: 5px 4px 15px rgb(173, 186, 190);
     box-shadow: 15px 15px 0px var(--orange-color);
 }
-
 .goal h2 {
     margin-bottom: 20px;
 }
-
 .goal .image-container {
     width: 450px;
     height: 300px;
@@ -154,4 +179,113 @@ hr {
     justify-content: center;
     box-shadow: 5px 4px 6px rgb(173, 186, 190);
     margin-bottom: 15px;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+
+/* Petit écran : Téléphones (max-width: 768px) */
+@media (max-width: 1024px) {
+    body {
+        padding: 20px 0;
+        background: #6086ac;
+    }
+
+    h1 {
+        font-size: 2em;
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .unresponsive {
+        display: none;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .responsive {
+        display: inline-block;
+    }
+
+    .box.horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .presentation {
+        box-shadow: none;
+        padding: 0;
+        padding-top: 50px;
+        width: 100%;
+    }
+    .presentation img {
+        width: 60%;
+    }
+
+    .presentation > img {
+        width: 20%;
+    }
+
+    .presentation .description {
+        width: 90%;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .networks {
+        flex-direction: column;
+    }
+    .networks .button {
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+    .presentation .networks > .button:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .objectifs {
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    .goal-list {
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .goal {
+        width: 45%;
+        height: auto;
+        margin-bottom: 30px;
+    }
+
+    .goal-list {
+        flex-direction: column;
+        gap: 50px;
+        padding: 0 20px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .goal {
+        width: 90%;
+        margin: 0 auto;
+        height: auto;
+        box-shadow: 10px 10px 0px var(--orange-color);
+    }
+
+    .goal .image-container {
+        width: 100%;
+        height: auto;
+    }
+
+    footer {
+        text-align: center;
+    }
 }
